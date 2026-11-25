@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SolanaView</title>
+  <meta name="description" content="See who launched a Solana token and what happened to their last ones, then trade it in one place.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand" data-link>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span>SolanaView</span>
+    </a>
+    <form class="search" id="search-top" role="search">
+      <input name="q" autocomplete="off" spellcheck="false" placeholder="Paste a token address" aria-label="Token address">
+      <button type="submit">Check</button>
+    </form>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <p>SolanaView reads public data from RugCheck and DexScreener and routes trades through Jupiter. Scores are a guide, not financial advice. Trades carry a small platform fee.</p>
+  </footer>
+
+  <template id="home-tpl">
+    <section class="hero">
+      <h1>See the dev before you buy.</h1>
+      <p class="lede">Paste any Solana token. We show who launched it, what happened to their last launches, and who's holding the supply. Then trade it right here.</p>
+      <form class="search search-lg" id="search-hero" role="search">
+        <input name="q" autocomplete="off" spellcheck="false" placeholder="Token address, e.g. DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263" aria-label="Token address">
+        <button type="submit">Check token</button>
+      </form>
+      <p class="search-error" id="hero-error" hidden></p>
+    </section>
+    <section class="trending">
+      <div class="section-head">
+        <h2>Trending now</h2>
+        <span class="muted">Click any token to see its dev report</span>
+      </div>
+      <div class="trend-grid" id="trend-grid">
+        <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+      </div>
+    </section>
+  </template>
+
+  <script src="https://plugin.jup.ag/plugin-v1.js" data-preload defer></script>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

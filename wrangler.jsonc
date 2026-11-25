@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "solanaview",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-11-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    // Your Jupiter referral account (create one at referral.jup.ag). Leave empty to charge no fee.
+    "REFERRAL_ACCOUNT": "",
+    // Fee in basis points: 100 = 1%. Jupiter allows 50-255 and keeps 20% of it.
+    "REFERRAL_FEE_BPS": "75"
+  }
+  // REQUIRED for dev history on the live site: a Solana RPC URL. The free public
+  // endpoint blocks cloud servers. A free Helius key (helius.dev) is plenty. Store it as a secret:
+  //   npx wrangler secret put RPC_URL      (paste https://mainnet.helius-rpc.com/?api-key=YOUR_KEY)
+  //
+  // To keep your own dev-history database (recommended), run
+  //   npx wrangler d1 create solanaview
+  // then paste the block it prints here, e.g.
+  // "d1_databases": [{ "binding": "DB", "database_name": "solanaview", "database_id": "..." }]
+  // and load the table:  npx wrangler d1 execute solanaview --remote --file=schema.sql
+}
