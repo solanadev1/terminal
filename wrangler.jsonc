@@ -14,7 +14,11 @@
     "REFERRAL_ACCOUNT": "",
     // Fee in basis points: 100 = 1%. Jupiter allows 50-255 and keeps 20% of it.
     "REFERRAL_FEE_BPS": "75"
-  }
+  },
+  // Every report saves the dev's launches here, so history keeps growing over time.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "solanaview", "database_id": "32ba64e8-a46c-4813-b990-c506e5a69e58" }
+  ]
   // REQUIRED for dev history on the live site: a Solana RPC URL. The free public
   // endpoint blocks cloud servers. A free Helius key (helius.dev) is plenty. Store it as a secret:
   //   npx wrangler secret put RPC_URL      (paste https://mainnet.helius-rpc.com/?api-key=YOUR_KEY)
